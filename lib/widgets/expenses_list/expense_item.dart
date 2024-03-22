@@ -17,14 +17,14 @@ class expense_item extends StatelessWidget {
           Row(
             children: [
               Text('\$${expense.amount.toStringAsFixed(2)}'),
-              Spacer(),
+              Spacer(), ///? Spacer is a widget that takes all the available space between the two widgets
               Row(
                 children: [
-                  Icon(Icons.alarm),
+                  Icon(Icons.alarm), //? Here we are using Icon widget to display the clock icon
                   const SizedBox(
                     width: 8,
                   ),
-                  Text(expense.date.toString())
+                  Text(expense.date.toString())  //? Here we are using Text widget to display the date of the expense
                 ],
               )
             ],

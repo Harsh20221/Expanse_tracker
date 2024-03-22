@@ -1,4 +1,4 @@
-
+//* Here  we have created a model class called Expense which will have the following properties
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';  //? We have to import uuid package to generate unique id
 final uuid=Uuid(); //? We have to create object of Uuid class to generate unique id
