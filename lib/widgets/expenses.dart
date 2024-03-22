@@ -13,14 +13,14 @@ class Expenses extends StatefulWidget {
 
 class _ExpensesState extends State<Expenses> {
   ///? Here we are creating a stateful widget called Expenses and a state called _ExpensesState
-  List<expense> _registeredexpenses = [
+  List<Expense> _registeredexpenses = [
     ///? Here we are creating a list of expenses called _registeredexpenses using expense model from expense.dart
-    expense(
+    Expense(
         title: 'Flutter Course ',
         amount: 19.99,
         date: DateTime.now(),
         category: Category.work),
-    expense(
+    Expense(
         title: 'Cinema',
         amount: 15.99,
         date: DateTime.now(),

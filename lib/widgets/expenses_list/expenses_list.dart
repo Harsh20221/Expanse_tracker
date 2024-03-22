@@ -3,7 +3,7 @@ import 'package:expansetracker/models/expense.dart';
 
 class expenses_list extends StatelessWidget {
   const expenses_list({super.key, required this.expenses});
-  final List<expense> expenses;
+  final List<Expense> expenses;
   @override
   Widget build(BuildContext context) {
     return ListView.builder(  //?  we are using ListView.builder to create a list of expenses that will be displayed on the screen ,

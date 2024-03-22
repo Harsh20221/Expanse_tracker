@@ -7,8 +7,8 @@ enum Category {  //? Write enum name in capital letter
   leisure,
   work,
 }
-class expense {  //? Write class name in small letter
-expense({
+class Expense { //? Make sure to write class name Expense in capital letter because it'll interfare if you create any list called as expense later in this course inside expense_item.dart
+Expense({
   required this.title,  
   required this.amount,
   required this.date,
