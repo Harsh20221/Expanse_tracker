@@ -1,7 +1,7 @@
 import 'package:expansetracker/widgets/expenses_list/expense_item.dart';
 import 'package:flutter/material.dart'; ///? In this file we are creating a new widget called expenses_list that will display the list of expenses on the screen
 import 'package:expansetracker/models/expense.dart';
-
+ ///* This file contains code for expenses_list , It defines how the list will displayed , It mainly takes care of the list view 
 class expenses_list extends StatelessWidget {
   const expenses_list({super.key, required this.expenses});
   final List<Expense> expenses;

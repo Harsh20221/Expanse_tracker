@@ -1,6 +1,6 @@
 import 'package:expansetracker/models/expense.dart';
 import 'package:flutter/material.dart';
-
+//* This file contains the code for expense_item , how each expense will be displayed on the screen , It contains the style for every expense item , The style for icons and text is defined here
 class expense_item extends StatelessWidget{
   const expense_item ( this.expense,{super.key});
   final Expense expense;
