@@ -1,4 +1,5 @@
 
+import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';  //? We have to import uuid package to generate unique id
 final uuid=Uuid(); //? We have to create object of Uuid class to generate unique id
 enum Category {  //? Write enum name in capital letter
@@ -7,6 +8,13 @@ enum Category {  //? Write enum name in capital letter
   leisure,
   work,
 }
+
+const Category_Icons= { //! Make sure to write = after defining Icons Category and write the categories inside {}
+  Category.food:Icons.lunch_dining,
+  Category.leisure:Icons.movie,
+  Category.travel:Icons.flight_takeoff,
+  Category.work:Icons.work
+};
 class Expense { //? Make sure to write class name Expense in capital letter because it'll interfare if you create any list called as expense later in this course inside expense_item.dart
 Expense({
   required this.title,  
