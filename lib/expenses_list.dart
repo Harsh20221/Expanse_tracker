@@ -6,8 +6,9 @@ class expenses_list extends StatelessWidget {
   final List<expense> expenses;
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        itemCount: expenses.length,
-        itemBuilder: ((context, index) => Text(expenses[index].title)));
-  }
+    return ListView.builder(  //?  we are using ListView.builder to create a list of expenses that will be displayed on the screen ,
+    ///? it's speciality is that it only renders the items that are visible on the screen
+        itemCount: expenses.length,  //? itemCount is the number of items that we want to display in the list
+        itemBuilder: ((context, index) => Text(expenses[index].title)));  
+  }  //? itemBuilder is a function that takes two arguments context and index and returns a widget that will be displayed at that index
 }
