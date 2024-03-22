@@ -1,4 +1,4 @@
-import 'package:expansetracker/expenses.dart';
+import 'package:expansetracker/widgets/expenses.dart';
 import 'package:flutter/material.dart';
 
 
