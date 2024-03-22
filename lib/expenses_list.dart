@@ -12,3 +12,4 @@ class expenses_list extends StatelessWidget {
         itemBuilder: ((context, index) => Text(expenses[index].title)));  
   }  //? itemBuilder is a function that takes two arguments context and index and returns a widget that will be displayed at that index
 }
+  
