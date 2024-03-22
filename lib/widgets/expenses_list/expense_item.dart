@@ -6,11 +6,12 @@ class expense_item extends StatelessWidget{
   final Expense expense;
   @override
   Widget build(BuildContext context){
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 16),
-      child: Card(
-        child: Text(expense.title), ///! Make sure to enclose the expense.title inside Text widget 
-      ),
-    );
+    return  Card(   
+        child:Padding(padding: EdgeInsets.symmetric(horizontal: 20,vertical: 16),child: Column(
+          children: [
+            Text(expense.title), const SizedBox(height: 4,)
+          ],
+        ),) ///! Make sure to enclose the expense.title inside Text widget
+    ); ///! Make sure Padding is Inside the Card Widget 
   }
 }
