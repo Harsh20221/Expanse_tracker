@@ -54,9 +54,9 @@ class _NewExpenseState extends State<New_Expense> {
         .text); //? This is a final variable entered amount to use tryparse and convert the string to float and if conversion is not successfull then null is returned
     final incorrectamount = enteredamount == null ||
         enteredamount <= 0; //? This checks for null value of  incorrect amt
-    if (_titlecontroller.text.trim().isEmpty ||
-        incorrectamount ||
-        _selecteddate == null) {
+    if (_titlecontroller.text.trim().isEmpty ||  //? This checks for empty title
+        incorrectamount ||  //? This checks for incorrect amount
+        _selecteddate == null) { //? This checks for null date
       //? This function returns error msg for incorrect amt , title and date
       showDialog(  //# showDialog is a special function that is used to display a dialog box
           context: context,
