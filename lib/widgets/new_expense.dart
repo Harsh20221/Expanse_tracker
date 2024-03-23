@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class New_Expense extends StatefulWidget {
   const New_Expense({super.key});
   @override
-  State<NewExpense> createState() {
+  State<New_Expense> createState() {
     return _NewExpenseState(); //! Return this in the form of a function with ()
   }
 }
