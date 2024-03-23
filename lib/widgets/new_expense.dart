@@ -9,12 +9,15 @@ class New_Expense extends StatefulWidget {
   }
 }
 
-var _enteredtitle = '';
+
 
 class _NewExpenseState extends State<New_Expense> {
-  void save_titleinput(String inputvalue) {
-    _enteredtitle = inputvalue;
-  }
+ final _titlecontroller=TextEditingController(); //*TextEditingController is a build in controller that is used to control the textfield , It is used to automatically store the text input without assigning variables for every field 
+ @override
+ void dispose(){
+  _titlecontroller.dispose();
+  super.dispose();
+ }
 
   Widget build(BuildContext context) {
     return Padding(
@@ -23,7 +26,7 @@ class _NewExpenseState extends State<New_Expense> {
         children: [
           TextField(
             //? We have created a dialog box for title paprameter to be entered by user using Textfield
-            onChanged: save_titleinput,
+            controller: _titlecontroller, //?controller is used to control the textfield using the build in controller function in flutter that we defined in line 15 
             maxLength:
                 50, //? savetitleinput is defined at line 12 , This function keeps track of saved user input
             decoration: InputDecoration(
@@ -32,8 +35,11 @@ class _NewExpenseState extends State<New_Expense> {
           ),
           Row(
             children: [
-              ElevatedButton(
-                  onPressed: () {print(_enteredtitle);}, child: const Text("Save Expense"))
+              ElevatedButton(  //? We have created a button called Save Expense to save the entered title
+                  onPressed: () {
+                    _titlecontroller.text; //? We are using _titlecontroller to save the entered title
+                  },       
+                  child: const Text("Save Expense"))
             ],
           )
         ],
