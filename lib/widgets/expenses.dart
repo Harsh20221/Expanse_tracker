@@ -49,7 +49,7 @@ void _openAddExpenseOverlay(){  //? This function will execute when appbar add  
           expenses: _registeredexpenses, ///? We are wrapping expenses_list widget in Expanded widget so that it takes the remaining space on the screen
         ))
 
-      ], //? Here we are displaying the list of expenses using expenses_list widget , _registered is defined at line 15
+      ], //? Here we are displaying the list of expenses using expenses_list widget , _registered is defined at line 18
     ));
   }
 }
