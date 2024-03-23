@@ -15,11 +15,11 @@ class _NewExpenseState extends State<New_Expense> {
   final formatter = DateFormat
       .yMd(); //? We have to create object of DateFormat class to format the date in the form of year month and date using intl package
 
-  final _titlecontroller = //* This dialog box is defined at line 55
+  final _titlecontroller = //* This is a controller for dialog box is defined at line 55 , it is used to store user input 
       TextEditingController(); //#TextEditingController is a build in controller that is used to control the textfield ,
   //#It is used to automatically store the text input without assigning variables for every field
 
-  final _amountcontroller = TextEditingController(); //* This dialog box is defined at line 69
+  final _amountcontroller = TextEditingController(); //* This dialog box is defined at line 69 , used to store user input 
 
   DateTime? _selecteddate; //? Here we have created a variable called _selecteddate to store the selected date , the ? takes care of null input 
 //! Please make sure to use ? after DateTime to avoid null safety errors  and also make sure to not write = after DateTime?
@@ -55,7 +55,7 @@ class _NewExpenseState extends State<New_Expense> {
           TextField(  //* This is a textfield dialog box for title parameter to be entered by user
             //? We have created a dialog box for title paprameter to be entered by user using Textfield
             controller:
-                _titlecontroller, //?controller is used to control the textfield using the build in controller function in flutter that we defined in line 15
+                _titlecontroller, //#controller is used to control the textfield using the build in controller function in flutter that we defined in line 15
             maxLength:
                 50, //? savetitleinput is defined at line 12 , This function keeps track of saved user input
             decoration: InputDecoration(
@@ -68,7 +68,7 @@ class _NewExpenseState extends State<New_Expense> {
                 //! Make sure to wrap Amount Controller with expanded too as we are using expanded for Iconbutton for Time in line 53, not using it will create errors
                 child: TextField(  //*This is a textfield dialog box for amount parameter to be entered by user
                   keyboardType: TextInputType.number,
-                  controller: _amountcontroller,
+                  controller: _amountcontroller,  //? We are using _amountcontroller to save the entered amount 
                   decoration:
                       InputDecoration(prefixText: "\$", label: Text("Amount")),
                   //! Write prefixtext like this "\$" do not miss forward backslash else it'll give error
@@ -81,9 +81,10 @@ class _NewExpenseState extends State<New_Expense> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(_selecteddate== null ? 'No Selected Date ' : formatter.format(_selecteddate!)), //* Here We are Using A terinary operator to show the  user Of the Expense date that was picked by the user 
-                  //* We have also assigned null case using terinary operator if there was no input from user , the !after _selecteddate ensures there is no null error  
-                  IconButton(
+                  Text(_selecteddate== null ? 'No Selected Date ' : formatter.format(_selecteddate!)), //# Here We are Using A terinary operator to show the  user Of the Expense date that was picked by the user 
+                  //# We have also assigned null case using terinary operator if there was no input from user , the !after _selecteddate ensures there is no null error  
+                
+                  IconButton(  //* This is a button called To select date , It is represented by a calendar icon in app
                       onPressed: () {
                         _presentdatepicker(); //? _presentdatepicker is defined at line 27 
                       },
@@ -94,23 +95,24 @@ class _NewExpenseState extends State<New_Expense> {
           ),
           Row(
             children: [
-              TextButton(
+              TextButton( //* This is a button called Cancel to cancel the dialog box
                   onPressed: () {
                     Navigator.pop(context);
                   },
                   child: Text("Cancel")),
-              ElevatedButton(
+
+              ElevatedButton(  //* This is a button called Save Expense to save the entered expense 
                   //# Navigator function is a special function that helps in the navigation across the App , using .pop will close the dialog box
                   //? We have created a button called Save Expense to save the entered title
                   onPressed: () {
-                    print(_titlecontroller
+                    print(_titlecontroller //? This line will print the entered title and amount in the debug console of flutter
                         .text); //? We are using _titlecontroller to save the entered title
                     print(_amountcontroller.text);
                   },
                   child: const Text("Save Expense"))
             ],
           )
-        ],
+        ],  
       ),
     );
   }
