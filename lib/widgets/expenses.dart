@@ -31,7 +31,7 @@ class _ExpensesState extends State<Expenses> {
         category: Category.leisure)
   ];
 
-void _openAddExpenseOverlay(){  //? This function will execute when appbar add  utton will be pressed 
+void _openAddExpenseOverlay(){  //? This function will execute when appbar add  button will be pressed 
   showModalBottomSheet(context: context, builder: (ctx)=>New_Expense());
 } //? This function will open a modal bottom sheet where we can enter our expenses to add  ,
 //? the context and ctx are same paremeters that congtains various metadata about widget , it's positon in ui etc etc .

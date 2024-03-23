@@ -7,16 +7,20 @@ class New_Expense extends StatefulWidget {
     return _NewExpenseState(); //! Return this in the form of a function with ()
   }
 }
-
+var _enteredtitle='';
 class _NewExpenseState extends State<New_Expense> {
+  void save_titleinput(String inputvalue){
+   _enteredtitle=inputvalue;
+  }
+
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(16),
-      child: Column(
+      child: Column(  
         children: [
-          TextField(
-            maxLength: 50,
-            decoration: InputDecoration(label: Text("Title")),
+          TextField( //? We have created a dialog box for title paprameter to be entered by user using Textfield 
+            onChanged: ,maxLength: 50,
+            decoration: InputDecoration(label: Text("Title")), //? This line gives the name to the textfield dialog box to Title 
           )
         ],
       ),
