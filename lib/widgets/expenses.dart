@@ -1,7 +1,8 @@
 import 'package:expansetracker/models/expense.dart';
 import 'package:flutter/material.dart';
 import 'package:expansetracker/widgets/expenses_list/expenses_list.dart';
-
+//* This file contains the dummy data for expenses to test the app 
+//* and it also contains the code to change the state of the app
 class Expenses extends StatefulWidget {
   const Expenses({super.key});
   @override

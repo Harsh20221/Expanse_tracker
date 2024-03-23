@@ -1,6 +1,7 @@
 //* Here  we have created a model class called Expense which will have the following properties
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';  //? We have to import uuid package to generate unique id
+import 'package:intl/intl.dart';
 final uuid=Uuid(); //? We have to create object of Uuid class to generate unique id
 enum Category {  //? Write enum name in capital letter
   food,
@@ -8,7 +9,7 @@ enum Category {  //? Write enum name in capital letter
   leisure,
   work,
 }
-
+final formatter=DateFormat.yMd();
 const Category_Icons= { //! Make sure to write = after defining Icons Category and write the categories inside {}
   Category.food:Icons.lunch_dining,
   Category.leisure:Icons.movie,
@@ -29,4 +30,10 @@ Expense({
   final DateTime date;
   final Category category;
   
+String get formatteddate{
+  return formatter.format(date);
+
+}
+
+
 }
