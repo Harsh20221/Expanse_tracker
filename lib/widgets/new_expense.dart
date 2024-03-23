@@ -37,7 +37,7 @@ class _NewExpenseState extends State<New_Expense> {
             decoration: InputDecoration(
                 label: Text(
                     "Title")), //? This line gives the name to the textfield dialog box to Title
-          ), TextField(keyboardType: TextInputType.number,controller: _amountcontroller,maxLength: 10,decoration: InputDecoration(label: Text("Amount")),),
+          ), TextField(keyboardType: TextInputType.number,controller: _amountcontroller,decoration: InputDecoration(label: Text("Amount")),),
           Row(
             children: [TextButton(onPressed: (){}, child:Text("Cancel")),
               ElevatedButton(  //? We have created a button called Save Expense to save the entered title
