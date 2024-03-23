@@ -5,7 +5,9 @@ import 'package:expansetracker/models/expense.dart';
 //* This file contains code for the Dialog box called modalbottomsheet that appears when user clicks on + button in appbar to add a new expense
 //* it also contains the ui for every element of the dialog box like title , amount , date etc , it also contains the logic to save the entered data
 class New_Expense extends StatefulWidget {
-  const New_Expense({super.key});
+  const New_Expense({super.key,required this.onAddexpense});
+   
+   final void Function(Expense expense) onAddexpense; //* This is creating a special . method for a function type , It is he;ping in adding new expenses to the list by user 
   @override
   State<New_Expense> createState() {
     return _NewExpenseState(); //! Return this in the form of a function with () not just usual
@@ -73,6 +75,8 @@ class _NewExpenseState extends State<New_Expense> {
               ));
       return;
     }
+    widget.onAddexpense(Expense(title: _titlecontroller.text, amount: enteredamount, date: _selecteddate!, category: _selectedcategory)); //# This is a special Widget function to add the expenses entered by the user 
+    //# It is written inside submit_expense data after return because if the input entered by user is correct then this function will execute 
   }
 
   @override
@@ -172,7 +176,7 @@ class _NewExpenseState extends State<New_Expense> {
                   //# Navigator function is a special function that helps in the navigation across the App , using .pop will close the dialog box
                   //? We have created a button called Save Expense to save the entered title
                   onPressed: () {
-                    submit_expensedata();
+                    submit_expensedata(); //?This is defined here at line 53 , tHis checks if the user has input correct expense data then adds new expense 
                   },
                   child: const Text("Save Expense"))
             ],
