@@ -1,4 +1,5 @@
 import 'package:expansetracker/models/expense.dart';
+import 'package:expansetracker/widgets/new_expense.dart';
 import 'package:flutter/material.dart';
 import 'package:expansetracker/widgets/expenses_list/expenses_list.dart';
 //* This file contains the dummy data for expenses to test the app 
@@ -31,7 +32,7 @@ class _ExpensesState extends State<Expenses> {
   ];
 
 void _openAddExpenseOverlay(){  //? This function will execute when appbar add  utton will be pressed 
-  showModalBottomSheet(context: context, builder: (ctx)=>Text("Modal Bottom Sheet "));
+  showModalBottomSheet(context: context, builder: (ctx)=>New_Expense());
 } //? This function will open a modal bottom sheet where we can enter our expenses to add  ,
 //? the context and ctx are same paremeters that congtains various metadata about widget , it's positon in ui etc etc .
 //? the => symbol represents return keyword 
