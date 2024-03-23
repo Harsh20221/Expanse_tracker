@@ -15,11 +15,11 @@ class _NewExpenseState extends State<New_Expense> {
   final formatter = DateFormat
       .yMd(); //? We have to create object of DateFormat class to format the date in the form of year month and date using intl package
 
-  final _titlecontroller =
+  final _titlecontroller = //* This dialog box is defined at line 55
       TextEditingController(); //#TextEditingController is a build in controller that is used to control the textfield ,
   //#It is used to automatically store the text input without assigning variables for every field
 
-  final _amountcontroller = TextEditingController();
+  final _amountcontroller = TextEditingController(); //* This dialog box is defined at line 69
 
   DateTime? _selecteddate; //? Here we have created a variable called _selecteddate to store the selected date , the ? takes care of null input 
 //! Please make sure to use ? after DateTime to avoid null safety errors  and also make sure to not write = after DateTime?
@@ -52,7 +52,7 @@ class _NewExpenseState extends State<New_Expense> {
       padding: EdgeInsets.all(16),
       child: Column(
         children: [
-          TextField(
+          TextField(  //* This is a textfield dialog box for title parameter to be entered by user
             //? We have created a dialog box for title paprameter to be entered by user using Textfield
             controller:
                 _titlecontroller, //?controller is used to control the textfield using the build in controller function in flutter that we defined in line 15
@@ -66,7 +66,7 @@ class _NewExpenseState extends State<New_Expense> {
             children: [
               Expanded(
                 //! Make sure to wrap Amount Controller with expanded too as we are using expanded for Iconbutton for Time in line 53, not using it will create errors
-                child: TextField(
+                child: TextField(  //*This is a textfield dialog box for amount parameter to be entered by user
                   keyboardType: TextInputType.number,
                   controller: _amountcontroller,
                   decoration:
@@ -74,6 +74,7 @@ class _NewExpenseState extends State<New_Expense> {
                   //! Write prefixtext like this "\$" do not miss forward backslash else it'll give error
                 ),
               ),
+
               const SizedBox(width: 16),
               Expanded(
                   child: Row(
