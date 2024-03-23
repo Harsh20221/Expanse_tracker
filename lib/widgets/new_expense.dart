@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
+ 
 //* This file contains code for the Dialog box called modalbottomsheet that appears when user clicks on + button in appbar to add a new expense
+//* it also contains the ui for every element of the dialog box like title , amount , date etc , it also contains the logic to save the entered data
 class New_Expense extends StatefulWidget {
   const New_Expense({super.key});
   @override
