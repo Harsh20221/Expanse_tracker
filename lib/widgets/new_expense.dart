@@ -44,8 +44,8 @@ class _NewExpenseState extends State<New_Expense> {
           ),
           Row(
             children: [
-              TextButton(onPressed: () {}, child: Text("Cancel")),
-              ElevatedButton(
+              TextButton(onPressed: () {Navigator.pop(context);}, child: Text("Cancel")),
+              ElevatedButton( //# Navigator function is a special function that helps in the navigation across the App , using .pop will close the dialog box 
                   //? We have created a button called Save Expense to save the entered title
                   onPressed: () {
                     print(_titlecontroller
