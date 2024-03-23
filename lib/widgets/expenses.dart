@@ -43,6 +43,12 @@ void _addexpense(Expense expense ){ //? This function _addexpense is pusing the 
   });
 }
 
+void _deleteexpense(Expense expense ){ //? This function _deleteexpense is deleting the expense value entered by the user from the list of _registeredexpenses   it'll be used in expenses_list.dart file
+  setState(() {
+    _registeredexpenses.remove(expense);
+  });
+}
+
 
 
   @override
@@ -53,8 +59,8 @@ void _addexpense(Expense expense ){ //? This function _addexpense is pusing the 
         //todo:then also remember to use function Icon() then write Icons.add inside the Icon function  , don't just write Icons.add without function definition 
       children: [
         Text("I LOVE YOU "),Expanded(child:  expenses_list(  ///? Here we are displaying the list of expenses using expenses_list widget that we created in expenses_list.dart file
-          expenses: _registeredexpenses, ///? We are wrapping expenses_list widget in Expanded widget so that it takes the remaining space on the screen
-        ))
+          expenses: _registeredexpenses,onRemoveExpense: _deleteexpense, ///? We are wrapping expenses_list widget in Expanded widget so that it takes the remaining space on the screen
+        ))//!!onremoveexpense  is used to remove the expense from the list defined inside expense_list.dart
 //# _registeredexpenses is showing the all the registered expenses in the form of a list , that's why we have added the new expenses in this at line 34 using _addexpense function defined here at line 40
       ], //? Here we are displaying the list of expenses using expenses_list widget , _registered is defined at line 18
     ));
