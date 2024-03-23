@@ -47,6 +47,16 @@ Category _selectedcategory=Category.leisure; //* Here we have created a variable
     });
   }
 
+
+  void submit_expensedata(){  //* This void function is checking for incorrect user inputs for amount , title and date 
+    final enteredamount= double.tryParse(_amountcontroller.text); //? This is a final variable entered amount to use tryparse and convert the string to float and if conversion is not successfull then null is returned
+    final incorrectamount = enteredamount==null ||enteredamount<=0; //? This checks for null value of  incorrect amt 
+    if (_titlecontroller.text.trim().isEmpty || incorrectamount || _selecteddate==null ){ //? This function returns error msg for incorrect amt , title and date 
+
+    }
+
+  }
+    
   @override
   void dispose() {
     //# Dispose is a special function that is used to clean up the resources that are used by the controller
@@ -110,6 +120,7 @@ Category _selectedcategory=Category.leisure; //* Here we have created a variable
           const SizedBox(height: 16),
           Row(
             children: [
+
               DropdownButton( //* This is a dropdown button called Category to select the category of the expense
               value: _selectedcategory, //!!! Here the value is uded to show the current selected category of the expense chosen by the user
                   items: Category.values.map((category) => DropdownMenuItem(value: category,  //!! Here value is the numeric value that will be stored in the database , it'll not be displayed and  will be used for backend purposes 
@@ -118,11 +129,13 @@ Category _selectedcategory=Category.leisure; //* Here we have created a variable
                   onChanged: (value) {if(value==null){
                     return;
                   } setState(() {
-                    _selectedcategory=value; //? Here we are using setState to change the state of the app when the category is selected
+                    _selectedcategory=value; //? Here we are using setState to change the state of the dropout button when the category is selected
                   });
                   
                   }),
+
               const Spacer(),//# Spacer is a widget that takes all the available space between the two widgets
+
               TextButton(
                   //* This is a button called Cancel to cancel the dialog box
                   onPressed: () {
