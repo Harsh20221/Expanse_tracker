@@ -15,7 +15,7 @@ class expenses_list extends StatelessWidget {
         ///? it's speciality is that it only renders the items that are visible on the screen
         itemCount: expenses
             .length, //? itemCount is the number of items that we want to display in the list
-        itemBuilder: ((context, index) => expense_item(expenses[index])));
+        itemBuilder: ((context, index) => Dismissible(key: ValueKey(expenses[index]), child:expense_item(expenses[index]) )));
 
     ///? Here we are using expense_item class
     ///?that we created inside expense_item file to display the list in the form of a card style instead of simple text
