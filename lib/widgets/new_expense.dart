@@ -23,8 +23,9 @@ class _NewExpenseState extends State<New_Expense> {
   final _amountcontroller =
       TextEditingController(); //* This dialog box is defined at line 69 , used to store user input
 
-Category _selectedcategory=Category.leisure; //* Here we have created a variable called _selectedcategory to store the default category of the expense to be used in the dropdown menu at line 110
- 
+  Category _selectedcategory = Category
+      .leisure; //* Here we have created a variable called _selectedcategory to store the default category of the expense to be used in the dropdown menu at line 110
+
   DateTime?
       _selecteddate; //? Here we have created a variable called _selecteddate to store the selected date , the ? takes care of null input
 //! Please make sure to use ? after DateTime to avoid null safety errors  and also make sure to not write = after DateTime?
@@ -47,16 +48,33 @@ Category _selectedcategory=Category.leisure; //* Here we have created a variable
     });
   }
 
-
-  void submit_expensedata(){  //* This void function is checking for incorrect user inputs for amount , title and date 
-    final enteredamount= double.tryParse(_amountcontroller.text); //? This is a final variable entered amount to use tryparse and convert the string to float and if conversion is not successfull then null is returned
-    final incorrectamount = enteredamount==null ||enteredamount<=0; //? This checks for null value of  incorrect amt 
-    if (_titlecontroller.text.trim().isEmpty || incorrectamount || _selecteddate==null ){ //? This function returns error msg for incorrect amt , title and date 
-
+  void submit_expensedata() {
+    //* This void function is checking for incorrect user inputs for amount , title and date
+    final enteredamount = double.tryParse(_amountcontroller
+        .text); //? This is a final variable entered amount to use tryparse and convert the string to float and if conversion is not successfull then null is returned
+    final incorrectamount = enteredamount == null ||
+        enteredamount <= 0; //? This checks for null value of  incorrect amt
+    if (_titlecontroller.text.trim().isEmpty ||
+        incorrectamount ||
+        _selecteddate == null) {
+      //? This function returns error msg for incorrect amt , title and date
+      showDialog(  //# showDialog is a special function that is used to display a dialog box
+          context: context,
+          builder: (ctx) => AlertDialog( //# AlertDialog is a special function that is used to display a dialog box with title and content
+                title:const Text("Invlid Input"),
+                content: const Text("Please Input Correct Name , Amount and Date "),
+                actions: [  //?Here we are using actions to display the button in the dialog box to close it 
+                  TextButton(
+                      onPressed: () {
+                        Navigator.pop(context); //# Navigator.pop is a special function that is used to close the dialog box
+                      },
+                      child: const Text("Close"))
+                ],
+              ));
+      return;
     }
-
   }
-    
+
   @override
   void dispose() {
     //# Dispose is a special function that is used to clean up the resources that are used by the controller
@@ -120,21 +138,28 @@ Category _selectedcategory=Category.leisure; //* Here we have created a variable
           const SizedBox(height: 16),
           Row(
             children: [
-
-              DropdownButton( //* This is a dropdown button called Category to select the category of the expense
-              value: _selectedcategory, //!!! Here the value is uded to show the current selected category of the expense chosen by the user
-                  items: Category.values.map((category) => DropdownMenuItem(value: category,  //!! Here value is the numeric value that will be stored in the database , it'll not be displayed and  will be used for backend purposes 
-                  //# map is a function that is used to convert the items into a list , by using => we are using a function that will return a widget
-                      child: Text(category.name.toUpperCase()))).toList(), //? .tolist is a function that is used to convert the items into a list not using it will create errors 
-                  onChanged: (value) {if(value==null){
-                    return;
-                  } setState(() {
-                    _selectedcategory=value; //? Here we are using setState to change the state of the dropout button when the category is selected
-                  });
-                  
+              DropdownButton(
+                  //* This is a dropdown button called Category to select the category of the expense
+                  value:
+                      _selectedcategory, //!!! Here the value is uded to show the current selected category of the expense chosen by the user
+                  items: Category.values
+                      .map((category) => DropdownMenuItem(
+                          value:
+                              category, //!! Here value is the numeric value that will be stored in the database , it'll not be displayed and  will be used for backend purposes
+                          //# map is a function that is used to convert the items into a list , by using => we are using a function that will return a widget
+                          child: Text(category.name.toUpperCase())))
+                      .toList(), //? .tolist is a function that is used to convert the items into a list not using it will create errors
+                  onChanged: (value) {
+                    if (value == null) {
+                      return;
+                    }
+                    setState(() {
+                      _selectedcategory =
+                          value; //? Here we are using setState to change the state of the dropout button when the category is selected
+                    });
                   }),
 
-              const Spacer(),//# Spacer is a widget that takes all the available space between the two widgets
+              const Spacer(), //# Spacer is a widget that takes all the available space between the two widgets
 
               TextButton(
                   //* This is a button called Cancel to cancel the dialog box
@@ -147,9 +172,7 @@ Category _selectedcategory=Category.leisure; //* Here we have created a variable
                   //# Navigator function is a special function that helps in the navigation across the App , using .pop will close the dialog box
                   //? We have created a button called Save Expense to save the entered title
                   onPressed: () {
-                    print(_titlecontroller //? This line will print the entered title and amount in the debug console of flutter
-                        .text); //? We are using _titlecontroller to save the entered title
-                    print(_amountcontroller.text);
+                    submit_expensedata();
                   },
                   child: const Text("Save Expense"))
             ],
