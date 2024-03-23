@@ -36,16 +36,36 @@ class _NewExpenseState extends State<New_Expense> {
                 label: Text(
                     "Title")), //? This line gives the name to the textfield dialog box to Title
           ),
-          TextField(
-            keyboardType: TextInputType.number,
-            controller: _amountcontroller,
-            decoration: InputDecoration(prefixText: "\$" ,label: Text("Amount")), 
-            //! Write prefixtext like this "\$" do not miss forward backslash else it'll give error 
+          Row(
+            children: [
+              Expanded(
+                //! Make sure to wrap Amount Controller with expanded too as we are using expanded for Iconbutton for Time in line 53, not using it will create errors
+                child: TextField(
+                  keyboardType: TextInputType.number,
+                  controller: _amountcontroller,
+                  decoration:
+                      InputDecoration(prefixText: "\$", label: Text("Amount")),
+                  //! Write prefixtext like this "\$" do not miss forward backslash else it'll give error
+                ),
+              ),
+
+          const SizedBox(width: 16),
+          Expanded(
+              child: Row(
+            children: [Text("Selected Date"),
+              IconButton(onPressed: () {}, icon: Icon(Icons.calendar_month))
+            ],
+          ))],  //! Here Make sure that this button To select date is inside the row widget of Amount Textfield else it'll be placed below that 
           ),
           Row(
             children: [
-              TextButton(onPressed: () {Navigator.pop(context);}, child: Text("Cancel")),
-              ElevatedButton( //# Navigator function is a special function that helps in the navigation across the App , using .pop will close the dialog box 
+              TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text("Cancel")),
+              ElevatedButton(
+                  //# Navigator function is a special function that helps in the navigation across the App , using .pop will close the dialog box
                   //? We have created a button called Save Expense to save the entered title
                   onPressed: () {
                     print(_titlecontroller
