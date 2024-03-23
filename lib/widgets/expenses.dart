@@ -16,7 +16,7 @@ class Expenses extends StatefulWidget {
 class _ExpensesState extends State<Expenses> {
   ///? Here we are creating a stateful widget called Expenses and a state called _ExpensesState
   List<Expense> _registeredexpenses = [ ///* Here we are creating a list of expenses called _registeredexpenses using expense model from expense.dart
-    Expense(
+    Expense(   //?The structure for Expense list is defined in expense.dart inside modals folder 
         title: 'Flutter Course ',
         amount: 19.99,
         date: DateTime.now(),
