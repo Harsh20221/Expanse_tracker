@@ -29,10 +29,18 @@ class _ExpensesState extends State<Expenses> {
         ///? Datetime.now is a function that returns the current date and time
         category: Category.leisure)
   ];
+
+void _openAddExpenseOverlay(){  //? This function will execute when appbar add  utton will be pressed 
+  showModalBottomSheet(context: context, builder: (ctx)=>Text("Modal Bottom Sheet "));
+} //? This function will open a modal bottom sheet where we can enter our expenses to add  ,
+//? the context and ctx are same paremeters that congtains various metadata about widget , it's positon in ui etc etc .
+//? the => symbol represents return keyword 
+
+
   @override
   Widget build(BuildContext context) {
     ///! write build's b in small letter and inside write BuildContext's B in capital letters
-  return Scaffold(appBar: AppBar(title: Text("Flutter Expense Tracker "),actions: [IconButton(onPressed: (){}, icon: Icon(Icons.add))],), //? This is how you'll add  a addbutton along with appbar inside scaffold   , Icon Button is a special button type that we are using inside actions paremeter 
+  return Scaffold(appBar: AppBar(title: Text("Flutter Expense Tracker "),actions: [IconButton(onPressed: _openAddExpenseOverlay, icon: Icon(Icons.add))],), //? This is how you'll add  a addbutton along with appbar inside scaffold   , Icon Button is a special button type that we are using inside actions paremeter 
         body: Column(  //todo: Do not forget to add Appbar function after appbar: argument inside scaffold then define a i\IconButton inside actions parameter of Appbar function 
         //todo:then also remember to use function Icon() then write Icons.add inside the Icon function  , don't just write Icons.add without function definition 
       children: [
