@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';  //? We have to import uuid package to generate unique id
 import 'package:intl/intl.dart';
 final uuid=Uuid(); //? We have to create object of Uuid class to generate unique id
-enum Category {  //? Write enum name in capital letter
+enum Category {  //? Write enum name in capital letter  , we use enum to define a fixed set of constants
   food,
   travel,
   leisure,
   work,
 }
-final formatter=DateFormat.yMd();
+final formatter=DateFormat.yMd(); //? We have to create object of DateFormat class to format the date in the form of year month and date using intl package
 const Category_Icons= { //! Make sure to write = after defining Icons Category and write the categories inside {}
   Category.food:Icons.lunch_dining,
   Category.leisure:Icons.movie,
@@ -31,7 +31,7 @@ Expense({
   final Category category;
   
 String get formatteddate{
-  return formatter.format(date);
+  return formatter.format(date); //? Here we are using formatter object to format the date in the form of year month and date
 
 }
 

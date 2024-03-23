@@ -21,7 +21,7 @@ class expense_item extends StatelessWidget {
               Spacer(), ///? Spacer is a widget that takes all the available space between the two widgets
               Row(
                 children: [
-                  Icon(Icons.alarm), //? Here we are using Icon widget to display the clock icon
+                  Icon(Category_Icons[expense.category]), //? Here we are using Icon widget to display correct icons based on the category of the expense
                   const SizedBox(
                     width: 8,
                   ),
