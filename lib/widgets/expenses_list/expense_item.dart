@@ -25,7 +25,7 @@ class expense_item extends StatelessWidget {
                   const SizedBox(
                     width: 8,
                   ),
-                  Text(expense.date.toString())  //? Here we are using Text widget to display the date of the expense
+                  Text(expense.formatteddate)  //? Here we are using Text widget to display the formatted date of the expense , the formatted date is defined in expense.dart file inside models
                 ],
               )
             ],
