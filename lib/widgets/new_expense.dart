@@ -107,10 +107,12 @@ Category _selectedcategory=Category.leisure; //* Here we have created a variable
               ))
             ], //! Here Make sure that this button To select date is inside the row widget of Amount Textfield else it'll be placed below that
           ),
+          const SizedBox(height: 16),
           Row(
             children: [
               DropdownButton( //* This is a dropdown button called Category to select the category of the expense
-                  items: Category.values.map((category) => DropdownMenuItem(value: _selectedcategory,  //? Here value is the numeric value that will be stored in the database , it'll not be displayed and  will be used for backend purposes 
+              value: _selectedcategory, //!!! Here the value is uded to show the current selected category of the expense chosen by the user
+                  items: Category.values.map((category) => DropdownMenuItem(value: category,  //!! Here value is the numeric value that will be stored in the database , it'll not be displayed and  will be used for backend purposes 
                   //# map is a function that is used to convert the items into a list , by using => we are using a function that will return a widget
                       child: Text(category.name.toUpperCase()))).toList(), //? .tolist is a function that is used to convert the items into a list not using it will create errors 
                   onChanged: (value) {if(value==null){
@@ -120,7 +122,7 @@ Category _selectedcategory=Category.leisure; //* Here we have created a variable
                   });
                   
                   }),
-              
+              const Spacer(),//# Spacer is a widget that takes all the available space between the two widgets
               TextButton(
                   //* This is a button called Cancel to cancel the dialog box
                   onPressed: () {
