@@ -12,7 +12,8 @@ class New_Expense extends StatefulWidget {
 
 
 class _NewExpenseState extends State<New_Expense> {
- final _titlecontroller=TextEditingController(); //*TextEditingController is a build in controller that is used to control the textfield , It is used to automatically store the text input without assigning variables for every field 
+ final _titlecontroller=TextEditingController(); //#TextEditingController is a build in controller that is used to control the textfield , 
+ //#It is used to automatically store the text input without assigning variables for every field 
  @override
  void dispose(){
   _titlecontroller.dispose();
@@ -37,7 +38,7 @@ class _NewExpenseState extends State<New_Expense> {
             children: [
               ElevatedButton(  //? We have created a button called Save Expense to save the entered title
                   onPressed: () {
-                    _titlecontroller.text; //? We are using _titlecontroller to save the entered title
+                   print(_titlecontroller.text); //? We are using _titlecontroller to save the entered title
                   },       
                   child: const Text("Save Expense"))
             ],

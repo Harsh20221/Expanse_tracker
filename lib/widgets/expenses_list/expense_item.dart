@@ -18,7 +18,7 @@ class expense_item extends StatelessWidget {
           Row(
             children: [
               Text('\$${expense.amount.toStringAsFixed(2)}'),
-              Spacer(), ///? Spacer is a widget that takes all the available space between the two widgets
+              Spacer(), ///# Spacer is a widget that takes all the available space between the two widgets
               Row(
                 children: [
                   Icon(Category_Icons[expense.category]), //? Here we are using Icon widget to display correct icons based on the category of the expense
