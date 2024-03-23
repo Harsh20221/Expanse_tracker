@@ -14,6 +14,11 @@ class _NewExpenseState extends State<New_Expense> {
       TextEditingController(); //#TextEditingController is a build in controller that is used to control the textfield ,
   //#It is used to automatically store the text input without assigning variables for every field
   final _amountcontroller = TextEditingController();
+void _presentdatepicker (){
+  final now =DateTime.now();
+  final _firstdate =DateTime(now.year-1, now.month,now.day);
+  showDatePicker(context: context, initialDate:now, firstDate:_firstdate , lastDate: now); //# ShowDatePicker is a special function that is used to Add a datepicker widget 
+}
   @override
   void dispose() {
     _titlecontroller.dispose();
@@ -53,7 +58,7 @@ class _NewExpenseState extends State<New_Expense> {
           Expanded(
               child: Row(mainAxisAlignment: MainAxisAlignment.end,crossAxisAlignment: CrossAxisAlignment.center,
             children: [Text("Selected Date"),
-              IconButton(onPressed: () {}, icon: Icon(Icons.calendar_month))
+              IconButton(onPressed: () {_presentdatepicker(); }, icon: Icon(Icons.calendar_month))
             ],
           ))],  //! Here Make sure that this button To select date is inside the row widget of Amount Textfield else it'll be placed below that 
           ),
