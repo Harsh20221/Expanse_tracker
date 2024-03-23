@@ -14,11 +14,15 @@ class New_Expense extends StatefulWidget {
 class _NewExpenseState extends State<New_Expense> {
  final _titlecontroller=TextEditingController(); //#TextEditingController is a build in controller that is used to control the textfield , 
  //#It is used to automatically store the text input without assigning variables for every field 
+ final _amountcontroller=TextEditingController();
  @override
  void dispose(){
   _titlecontroller.dispose();
+  _amountcontroller.dispose();
   super.dispose();
  }
+
+ 
 
   Widget build(BuildContext context) {
     return Padding(
@@ -33,15 +37,15 @@ class _NewExpenseState extends State<New_Expense> {
             decoration: InputDecoration(
                 label: Text(
                     "Title")), //? This line gives the name to the textfield dialog box to Title
-          ),
+          ), TextField(keyboardType: TextInputType.number,controller: _amountcontroller,maxLength: 10,decoration: InputDecoration(label: Text("Amount")),),
           Row(
-            children: [
+            children: [TextButton(onPressed: (){}, child:Text("Cancel")),
               ElevatedButton(  //? We have created a button called Save Expense to save the entered title
                   onPressed: () {
                    print(_titlecontroller.text); //? We are using _titlecontroller to save the entered title
+                   print(_amountcontroller.text);
                   },       
-                  child: const Text("Save Expense"))
-            ],
+                  child: const Text("Save Expense"))],
           )
         ],
       ),
