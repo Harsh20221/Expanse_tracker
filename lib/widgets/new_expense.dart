@@ -15,8 +15,8 @@ class _NewExpenseState extends State<New_Expense> {
   //#It is used to automatically store the text input without assigning variables for every field
   final _amountcontroller = TextEditingController();
 void _presentdatepicker (){
-  final now =DateTime.now();
-  final _firstdate =DateTime(now.year-1, now.month,now.day);
+  final now =DateTime.now(); //? This is a  function that is used to get the current date and time
+  final _firstdate =DateTime(now.year-1, now.month,now.day); //? Here we have assigned variables to be put in the parameters of showDatePicker 
   showDatePicker(context: context, initialDate:now, firstDate:_firstdate , lastDate: now); //# ShowDatePicker is a special function that is used to Add a datepicker widget 
 }
   @override
