@@ -2,7 +2,7 @@ import 'package:expansetracker/models/expense.dart';
 import 'package:expansetracker/widgets/new_expense.dart';
 import 'package:flutter/material.dart';
 import 'package:expansetracker/widgets/expenses_list/expenses_list.dart';
-
+//* This file has the code for add and delete expense too 
 //* This file contains the dummy data for expenses to test the app
 //* and it also contains the code to change the state of the app and contains code for home screen of app like Scaffold and appbar
 class Expenses extends StatefulWidget {
@@ -81,7 +81,7 @@ class _ExpensesState extends State<Expenses> {
     ///! write build's b in small letter and inside write BuildContext's B in capital letters
 
     Widget maincontent = const Center(
-      child: Text("No Expenses Found, Please Enter Some!"),
+      child: Text("No Expenses Found, Please Enter Some!"),  //? Here we are displaying an error message if there are no expenses entered by the user on home screen
     );
     if (_registeredexpenses.isNotEmpty) {
       //* Here we are checking if there are no expenses entered by the user and if we found that there are no expenses
