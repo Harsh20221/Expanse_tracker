@@ -16,15 +16,15 @@ void main() {
             useMaterial3: true,
             scaffoldBackgroundColor: Color.fromARGB(255, 220, 189, 252),
             colorScheme: kcolorscheme,
-            appBarTheme: AppBarTheme().copyWith(
+            appBarTheme: AppBarTheme().copyWith(  //? AppBar Theme 
                 //? To change AppBar Theme
                 backgroundColor: kcolorscheme.primary,
                 foregroundColor: kcolorscheme.primaryContainer),
-            cardTheme: CardTheme().copyWith(
+            cardTheme: CardTheme().copyWith( //? Theme of Card Widget Responsible for displaying of Expense List 
                 color: kcolorscheme.secondaryContainer,
                 margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8)),
             elevatedButtonTheme: ElevatedButtonThemeData(
-                style: ElevatedButton.styleFrom(
+                style: ElevatedButton.styleFrom(  //? Theme of Eleveted Button 
                     backgroundColor: kcolorscheme.primaryContainer)),
             textTheme: ThemeData().textTheme.copyWith(
                 titleLarge: TextStyle(
