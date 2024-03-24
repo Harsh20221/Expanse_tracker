@@ -52,16 +52,22 @@ void _deleteexpense(Expense expense ){ //? This function _deleteexpense is delet
 
 
   @override
-  Widget build(BuildContext context) {
-    ///! write build's b in small letter and inside write BuildContext's B in capital letters
+  Widget build(BuildContext context) { ///! write build's b in small letter and inside write BuildContext's B in capital letters
+  
+  Widget maincontent = const Center(child: Text("No Expenses Found, Please Enter Some!"),); 
+  if (_registeredexpenses.isNotEmpty){ //* Here we are checking if there are no expenses entered by the user and if we found that there are no expenses 
+  //* entered by the user then using the variable maincontent we are Displaying an error Mesasage 
+  maincontent= expenses_list(  
+          expenses: _registeredexpenses,onRemoveExpense: _deleteexpense, //
+        ); //?onremoveexpense  is used to remove the expense from the list defined inside new_expense,
+    //# _registeredexpenses is showing the all the registered expenses in the form of a list , that's why we have added the new expenses in this at line 34 using _addexpense function defined here at line 40
+  }
   return Scaffold(appBar: AppBar(title: Text("Flutter Expense Tracker "),actions: [IconButton(onPressed: _openAddExpenseOverlay, icon: Icon(Icons.add))],), //? This is how you'll add  a addbutton along with appbar inside scaffold   , Icon Button is a special button type that we are using inside actions paremeter 
         body: Column(  //todo: Do not forget to add Appbar function after appbar: argument inside scaffold then define a i\IconButton inside actions parameter of Appbar function 
         //todo:then also remember to use function Icon() then write Icons.add inside the Icon function  , don't just write Icons.add without function definition 
       children: [
-        Text("I LOVE YOU "),Expanded(child:  expenses_list(  ///? Here we are displaying the list of expenses using expenses_list widget that we created in expenses_list.dart file
-          expenses: _registeredexpenses,onRemoveExpense: _deleteexpense, ///? We are wrapping expenses_list widget in Expanded widget so that it takes the remaining space on the screen
-        ))//?onremoveexpense  is used to remove the expense from the list defined inside new_expense,
-//# _registeredexpenses is showing the all the registered expenses in the form of a list , that's why we have added the new expenses in this at line 34 using _addexpense function defined here at line 40
+        Text("I LOVE YOU "),Expanded(child: maincontent)
+
       ], //? Here we are displaying the list of expenses using expenses_list widget , _registered is defined at line 18
     ));
   }
