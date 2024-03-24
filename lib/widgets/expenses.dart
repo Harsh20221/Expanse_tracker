@@ -60,7 +60,7 @@ void _deleteexpense(Expense expense ){ //? This function _deleteexpense is delet
       children: [
         Text("I LOVE YOU "),Expanded(child:  expenses_list(  ///? Here we are displaying the list of expenses using expenses_list widget that we created in expenses_list.dart file
           expenses: _registeredexpenses,onRemoveExpense: _deleteexpense, ///? We are wrapping expenses_list widget in Expanded widget so that it takes the remaining space on the screen
-        ))//?onremoveexpense  is used to remove the expense from the list defined inside new_expense
+        ))//?onremoveexpense  is used to remove the expense from the list defined inside new_expense,
 //# _registeredexpenses is showing the all the registered expenses in the form of a list , that's why we have added the new expenses in this at line 34 using _addexpense function defined here at line 40
       ], //? Here we are displaying the list of expenses using expenses_list widget , _registered is defined at line 18
     ));
