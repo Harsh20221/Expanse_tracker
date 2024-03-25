@@ -6,10 +6,10 @@ var kcolorscheme = ColorScheme.fromSeed(
 ); //? Creating a color scheme for the app
 //* This file is the main file from where everything runs
 //* it's the entry point of the app
-
+var kdarkcolorscheme=ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 5, 99, 125,),brightness: Brightness.dark); //? We added this variable to store theme color  for dark mode 
 void main() {
   runApp(
-    MaterialApp(
+    MaterialApp(darkTheme: ThemeData.dark().copyWith(useMaterial3: true,colorScheme: kdarkcolorscheme), //# There's a special parameter for dark theme in flutter 
         theme: ThemeData().copyWith(
             //# Using this Themedata We are providing basic theme for vairous elements in our app
             //# We are using this function so that we don't have to manually change the styling of every widget , Rather we can choose from a default theme
@@ -30,7 +30,7 @@ void main() {
                 titleLarge: TextStyle(
                     fontWeight: FontWeight.normal,
                     color: kcolorscheme.onSecondaryContainer,
-                    fontSize: 14))),
+                    fontSize: 14))),themeMode: ThemeMode.system,//? Here we set the theme to be default as system theme either dark or light as selected by user 
         home: const Expenses()),
   ); //? Adding Themedata then using Material 3= true will change appbar from blue to White
 } //
