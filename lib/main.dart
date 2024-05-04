@@ -14,7 +14,7 @@ void main() { WidgetsFlutterBinding.ensureInitialized(); //?We have created this
             //# Using this Themedata We are providing basic theme for vairous elements in our app
             //# We are using this function so that we don't have to manually change the styling of every widget , Rather we can choose from a default theme
             useMaterial3: true,
-            scaffoldBackgroundColor: Color.fromARGB(255, 241, 186, 231),
+            scaffoldBackgroundColor: Color.fromARGB(255, 239, 214, 234),
             colorScheme: kcolorscheme,
             appBarTheme: AppBarTheme().copyWith(  //? AppBar Theme 
                 //? To change AppBar Theme
