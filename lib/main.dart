@@ -2,7 +2,7 @@ import 'package:expansetracker/widgets/expenses.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 var kcolorscheme = ColorScheme.fromSeed(
-  seedColor: Color.fromARGB(255, 96, 59, 181),
+  seedColor: Color.fromARGB(247, 143, 7, 216),
 ); //? Creating a color scheme for the app
 //* This file is the main file from where everything runs
 //* it's the entry point of the app
@@ -14,7 +14,7 @@ void main() { WidgetsFlutterBinding.ensureInitialized(); //?We have created this
             //# Using this Themedata We are providing basic theme for vairous elements in our app
             //# We are using this function so that we don't have to manually change the styling of every widget , Rather we can choose from a default theme
             useMaterial3: true,
-            scaffoldBackgroundColor: Color.fromARGB(255, 220, 189, 252),
+            scaffoldBackgroundColor: Color.fromARGB(255, 241, 186, 231),
             colorScheme: kcolorscheme,
             appBarTheme: AppBarTheme().copyWith(  //? AppBar Theme 
                 //? To change AppBar Theme

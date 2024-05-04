@@ -38,21 +38,21 @@ String get formatteddate{
 
 }
 
-class ExpenseBucket{
-  const ExpenseBucket({required this.category , required this.expenses});
+class ExpenseBucket { //# This a a Additional Class to Organise Individual expense in Bukets to Help The Chart Widgets access individual expenses 
+  const ExpenseBucket({required this.category, required this.expenses});
+  ExpenseBucket.forCategory(List<Expense> allExpenses, this.category)  //# Additional Constructor function to Sort Expenses 
+      : expenses = allExpenses
+            .where((expense) => expense.category == category) 
+            .toList();
   final Category category;
-  final List <Expense> expenses ;
+  final List<Expense> expenses;
 
-double get totalExpenses{
-  double  sum =0;
+  double get totalExpenses {
+    double sum = 0;
 
-  for(final expense in expenses){
-    sum = sum + expense.amount;
+    for (final expense in expenses) {  //# This for loop adds all the expenses and return the sum of all expenses 
+      sum = sum + expense.amount;
+    }
+    return sum;
   }
-return sum;
-
-}
-
-
-
 }

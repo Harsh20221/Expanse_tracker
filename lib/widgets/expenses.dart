@@ -2,6 +2,8 @@ import 'package:expansetracker/models/expense.dart';
 import 'package:expansetracker/widgets/new_expense.dart';
 import 'package:flutter/material.dart';
 import 'package:expansetracker/widgets/expenses_list/expenses_list.dart';
+import 'chart/chart.dart';
+
 //* This file has the code for add and delete expense too 
 //* This file contains the dummy data for expenses to test the app
 //* and it also contains the code to change the state of the app and contains code for home screen of app like Scaffold and appbar
@@ -102,7 +104,7 @@ class _ExpensesState extends State<Expenses> {
           //todo: Do not forget to add Appbar function after appbar: argument inside scaffold then define a i\IconButton inside actions parameter of Appbar function
           //todo:then also remember to use function Icon() then write Icons.add inside the Icon function  , don't just write Icons.add without function definition
           children: [
-            Text("I LOVE YOU "),
+            Chart(expenses: _registeredexpenses),
             Expanded(child: maincontent)
           ], //? Here we are displaying the list of expenses using expenses_list widget , _registered is defined at line 18
         ));
