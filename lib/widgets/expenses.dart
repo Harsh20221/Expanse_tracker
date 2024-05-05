@@ -97,7 +97,7 @@ class _ExpensesState extends State<Expenses> {
       //# _registeredexpenses is showing the all the registered expenses in the form of a list , that's why we have added the new expenses in this at line 34 using _addexpense function defined here at line 40
     }
     return Scaffold(
-        appBar: AppBar(
+        appBar: AppBar(centerTitle: true,
           title: Text("Flutter Expense Tracker "),
           actions: [
             IconButton(onPressed: _openAddExpenseOverlay, icon: Icon(Icons.add))
