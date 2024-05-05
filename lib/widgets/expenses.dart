@@ -81,6 +81,7 @@ class _ExpensesState extends State<Expenses> {
   @override
   Widget build(BuildContext context) {
     ///! write build's b in small letter and inside write BuildContext's B in capital letters
+    final width = MediaQuery.of(context).size.width; //# This Final list here stores available width in the UI to change chart orientation from column to row 
 
     Widget maincontent = const Center(
       child: Text("No Expenses Found, Please Enter Some!"),  //? Here we are displaying an error message if there are no expenses entered by the user on home screen
@@ -100,13 +101,15 @@ class _ExpensesState extends State<Expenses> {
             IconButton(onPressed: _openAddExpenseOverlay, icon: Icon(Icons.add))
           ],
         ), //? This is how you'll add  a addbutton along with appbar inside scaffold   , Icon Button is a special button type that we are using inside actions paremeter
-        body: Column(
+        body: width < 600 ? Column(  //? We are using Terenary Operator Here to change Ui of app From Portrait To Landscape based on Available Space 
           //todo: Do not forget to add Appbar function after appbar: argument inside scaffold then define a i\IconButton inside actions parameter of Appbar function
           //todo:then also remember to use function Icon() then write Icons.add inside the Icon function  , don't just write Icons.add without function definition
           children: [
             Chart(expenses: _registeredexpenses),
             Expanded(child: maincontent)
           ], //? Here we are displaying the list of expenses using expenses_list widget , _registered is defined at line 18
-        ));
+        ):Row( children: [Expanded(child:Chart(expenses: _registeredexpenses),),
+            Expanded(child: maincontent)
+          ]));
   }
 }
