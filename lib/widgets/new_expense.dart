@@ -100,100 +100,105 @@ class _NewExpenseState extends State<New_Expense> {
   }
 
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(16),
-      child: Column(
-        children: [
-          TextField(
-            //* This is a textfield dialog box for title parameter to be entered by user
-            //? We have created a dialog box for title paprameter to be entered by user using Textfield
-            controller:
-                _titlecontroller, //#controller is used to control the textfield using the build in controller function in flutter that we defined in line 15
-            maxLength:
-                50, //? savetitleinput is defined at line 12 , This function keeps track of saved user input
-            decoration: InputDecoration(
-                label: Text(
-                    "Title")), //? This line gives the name to the textfield dialog box to Title
-          ),
-          Row(
+    final keyboardspace = MediaQuery.of(context).viewInsets.bottom;
+    return SizedBox(height: double.infinity,
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(16, 48, 16,keyboardspace+16),
+          child: Column(
             children: [
-              Expanded(
-                //! Make sure to wrap Amount Controller with expanded too as we are using expanded for Iconbutton for Time in line 53, not using it will create errors
-                child: TextField(
-                  //*This is a textfield dialog box for amount parameter to be entered by user
-                  keyboardType: TextInputType.number,
-                  controller:
-                      _amountcontroller, //? We are using _amountcontroller to save the entered amount
-                  decoration:
-                      InputDecoration(prefixText: "\$", label: Text("Amount")),
-                  //! Write prefixtext like this "\$" do not miss forward backslash else it'll give error
-                ),
+              TextField(
+                //* This is a textfield dialog box for title parameter to be entered by user
+                //? We have created a dialog box for title paprameter to be entered by user using Textfield
+                controller:
+                    _titlecontroller, //#controller is used to control the textfield using the build in controller function in flutter that we defined in line 15
+                maxLength:
+                    50, //? savetitleinput is defined at line 12 , This function keeps track of saved user input
+                decoration: InputDecoration(
+                    label: Text(
+                        "Title")), //? This line gives the name to the textfield dialog box to Title
               ),
-              const SizedBox(width: 16),
-              Expanded(
-                  child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.center,
+              Row(
                 children: [
-                  Text(_selecteddate == null
-                      ? 'No Selected Date '
-                      : formatter.format(
-                          _selecteddate!)), //# Here We are Using A terinary operator to show the  user Of the Expense date that was picked by the user
-                  //# We have also assigned null case using terinary operator if there was no input from user , the !after _selecteddate ensures there is no null error
-
-                  IconButton(
-                      //* This is a button called To select date , It is represented by a calendar icon in app
+                  Expanded(
+                    //! Make sure to wrap Amount Controller with expanded too as we are using expanded for Iconbutton for Time in line 53, not using it will create errors
+                    child: TextField(
+                      //*This is a textfield dialog box for amount parameter to be entered by user
+                      keyboardType: TextInputType.number,
+                      controller:
+                          _amountcontroller, //? We are using _amountcontroller to save the entered amount
+                      decoration:
+                          InputDecoration(prefixText: "\$", label: Text("Amount")),
+                      //! Write prefixtext like this "\$" do not miss forward backslash else it'll give error
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                      child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(_selecteddate == null
+                          ? 'No Selected Date '
+                          : formatter.format(
+                              _selecteddate!)), //# Here We are Using A terinary operator to show the  user Of the Expense date that was picked by the user
+                      //# We have also assigned null case using terinary operator if there was no input from user , the !after _selecteddate ensures there is no null error
+      
+                      IconButton(
+                          //* This is a button called To select date , It is represented by a calendar icon in app
+                          onPressed: () {
+                            _presentdatepicker(); //? _presentdatepicker is defined at line 27
+                          },
+                          icon: Icon(Icons.calendar_month))
+                    ],
+                  ))
+                ], //! Here Make sure that this button To select date is inside the row widget of Amount Textfield else it'll be placed below that
+              ),
+              const SizedBox(height: 16),
+              Row(
+                children: [
+                  DropdownButton(
+                      //* This is a dropdown button called Category to select the category of the expense
+                      value:
+                          _selectedcategory, //!!! Here the value is uded to show the current selected category of the expense chosen by the user
+                      items: Category.values
+                          .map((category) => DropdownMenuItem(
+                              value:
+                                  category, //!! Here value is the numeric value that will be stored in the database , it'll not be displayed and  will be used for backend purposes
+                              //# map is a function that is used to convert the items into a list , by using => we are using a function that will return a widget
+                              child: Text(category.name.toUpperCase())))
+                          .toList(), //? .tolist is a function that is used to convert the items into a list not using it will create errors
+                      onChanged: (value) {
+                        if (value == null) {
+                          return;
+                        }
+                        setState(() {
+                          _selectedcategory =
+                              value; //? Here we are using setState to change the state of the dropout button when the category is selected
+                        });
+                      }),
+      
+                  const Spacer(), //# Spacer is a widget that takes all the available space between the two widgets
+      
+                  TextButton(
+                      //* This is a button called Cancel to cancel the dialog box
                       onPressed: () {
-                        _presentdatepicker(); //? _presentdatepicker is defined at line 27
+                        Navigator.pop(context);
                       },
-                      icon: Icon(Icons.calendar_month))
+                      child: Text("Cancel")),
+                  ElevatedButton(
+                      //* This is a button called Save Expense to save the entered expense
+                      //# Navigator function is a special function that helps in the navigation across the App , using .pop will close the dialog box
+                      //? We have created a button called Save Expense to save the entered title
+                      onPressed: () {
+                        submit_expensedata(); //?This is defined here at line 53 , tHis checks if the user has input correct expense data then adds new expense
+                      },
+                      child: const Text("Save Expense"))
                 ],
-              ))
-            ], //! Here Make sure that this button To select date is inside the row widget of Amount Textfield else it'll be placed below that
-          ),
-          const SizedBox(height: 16),
-          Row(
-            children: [
-              DropdownButton(
-                  //* This is a dropdown button called Category to select the category of the expense
-                  value:
-                      _selectedcategory, //!!! Here the value is uded to show the current selected category of the expense chosen by the user
-                  items: Category.values
-                      .map((category) => DropdownMenuItem(
-                          value:
-                              category, //!! Here value is the numeric value that will be stored in the database , it'll not be displayed and  will be used for backend purposes
-                          //# map is a function that is used to convert the items into a list , by using => we are using a function that will return a widget
-                          child: Text(category.name.toUpperCase())))
-                      .toList(), //? .tolist is a function that is used to convert the items into a list not using it will create errors
-                  onChanged: (value) {
-                    if (value == null) {
-                      return;
-                    }
-                    setState(() {
-                      _selectedcategory =
-                          value; //? Here we are using setState to change the state of the dropout button when the category is selected
-                    });
-                  }),
-
-              const Spacer(), //# Spacer is a widget that takes all the available space between the two widgets
-
-              TextButton(
-                  //* This is a button called Cancel to cancel the dialog box
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Text("Cancel")),
-              ElevatedButton(
-                  //* This is a button called Save Expense to save the entered expense
-                  //# Navigator function is a special function that helps in the navigation across the App , using .pop will close the dialog box
-                  //? We have created a button called Save Expense to save the entered title
-                  onPressed: () {
-                    submit_expensedata(); //?This is defined here at line 53 , tHis checks if the user has input correct expense data then adds new expense
-                  },
-                  child: const Text("Save Expense"))
+              )
             ],
-          )
-        ],
+          ),
+        ),
       ),
     );
   }

@@ -38,6 +38,8 @@ class _ExpensesState extends State<Expenses> {
   void _openAddExpenseOverlay() {
     //? This function will execute when appbar add  button will be pressed
     showModalBottomSheet(
+      useSafeArea: true,
+      isScrollControlled: true,  //! Make sure to impliment this function else the Dialog Box to enter expense will only cober half of the screen 
         context: context,
         builder: (ctx) => New_Expense(
             onAddexpense:
