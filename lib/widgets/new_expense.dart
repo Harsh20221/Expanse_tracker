@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:expansetracker/models/expense.dart';
-
+import 'package:flutter/cupertino.dart';
+import 'dart:io';
 //* This file contains code for the Dialog box called modalbottomsheet that appears when user clicks on + button in appbar to add a new expense
 //* it also contains the ui for every element of the dialog box like title , amount , date etc , it also contains the logic to save the entered data
 class New_Expense extends StatefulWidget {
@@ -62,7 +63,21 @@ class _NewExpenseState extends State<New_Expense> {
         _selecteddate == null) {
       //? This checks for null date
       //? This function returns error msg for incorrect amt , title and date
-      showDialog(
+     
+      void _showDialog()
+      { if(Platform.isIOS){ showCupertinoDialog(context: context, builder: (ctx)=>CupertinoAlertDialog( title: const Text("Invlid Input"),
+                content:
+                    const Text("Please Input Correct Name , Amount and Date "),
+                actions: [
+                  //?Here we are using actions to display the button in the dialog box to close it
+                  TextButton(
+                      onPressed: () {
+                        Navigator.pop(
+                            context); //# Navigator.pop is a special function that is used to close the dialog box
+                      },
+                      child: const Text("Close"))
+                ],));}
+       else {showDialog(
           //# showDialog is a special function that is used to display a dialog box
           context: context,
           builder: (ctx) => AlertDialog(
@@ -79,8 +94,12 @@ class _NewExpenseState extends State<New_Expense> {
                       },
                       child: const Text("Close"))
                 ],
-              ));
-      return;
+              ));}
+      
+
+      }
+      
+      return _showDialog();
     }
     widget.onAddexpense(Expense(//# This is a special Widget function to add the expenses entered by the user
         title: _titlecontroller.text,

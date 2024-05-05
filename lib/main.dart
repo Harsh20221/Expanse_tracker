@@ -1,6 +1,7 @@
 import 'package:expansetracker/widgets/expenses.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 var kcolorscheme = ColorScheme.fromSeed(
   seedColor: Color.fromARGB(255, 96, 59, 181),
 ); //? Creating a color scheme for the app
